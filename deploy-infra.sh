@@ -3,6 +3,7 @@
 STACK_NAME=awsbootstrap-markus
 REGION=eu-north-1
 CLI_PROFILE=awsbootstrap
+DOMAIN=aws-bootstrap-markus.sandbox.yubico.org
 
 EC2_INSTANCE_TYPE=t3.micro
 
@@ -59,7 +60,8 @@ aws cloudformation deploy \
   GitHubRepo=$GH_REPO \
   GitHubBranch=$GH_BRANCH \
   GitHubPersonalAccessToken=$GH_ACCESS_TOKEN \
-  CodePipelineBucket=$CODEPIPELINE_BUCKET
+  CodePipelineBucket=$CODEPIPELINE_BUCKET \
+  Domain=$DOMAIN
 
 # If the deploy succeeded, show the DNS name of the created instance
 if [ $? -eq 0 ]; then
