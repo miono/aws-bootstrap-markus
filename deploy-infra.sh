@@ -4,6 +4,7 @@ STACK_NAME=awsbootstrap-markus
 REGION=eu-north-1
 CLI_PROFILE=awsbootstrap
 DOMAIN=aws-bootstrap-markus.sandbox.yubico.org
+CERT=$(aws acm list-certificates --region $REGION --profile $CLI_PROFILE --output text --query "CertificateSummaryList[?DomainName=='$DOMAIN'].CertificateArn | [0]")
 
 EC2_INSTANCE_TYPE=t3.micro
 
@@ -61,7 +62,8 @@ aws cloudformation deploy \
   GitHubBranch=$GH_BRANCH \
   GitHubPersonalAccessToken=$GH_ACCESS_TOKEN \
   CodePipelineBucket=$CODEPIPELINE_BUCKET \
-  Domain=$DOMAIN
+  Domain=$DOMAIN \
+  Certificate=$CERT
 
 # If the deploy succeeded, show the DNS name of the created instance
 if [ $? -eq 0 ]; then
