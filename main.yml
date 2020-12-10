@@ -197,16 +197,6 @@ Resources:
         Certificate: !Ref Certificate
 
 Outputs:
-  StagingLBEndpoint:
-    Description: The DNS name for the staging LB
-    Value: !GetAtt Staging.Outputs.LBEndpoint
-    Export:
-      Name: StagingLBEndpoint
-  ProdLBEndpoint:
-    Description: The DNS name for the staging LB
-    Value: !GetAtt Prod.Outputs.LBEndpoint
-    Export:
-      Name: ProdLBEndpoint
   StagingHTTPSLBEndpoint:
     Description: The DNS name for the staging LB
     Value: !GetAtt Staging.Outputs.HTTPSEndpoint
